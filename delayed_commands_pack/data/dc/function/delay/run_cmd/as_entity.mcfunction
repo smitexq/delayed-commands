@@ -1,0 +1,1 @@
+$execute as $(UUID) in $(dimension) positioned $(X) $(Y) $(Z) rotated $(RotationX) $(RotationY) run $(command)

@@ -1,0 +1,1 @@
+$execute as $(UUID) at @s run $(command)
