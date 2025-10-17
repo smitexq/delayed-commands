@@ -27,14 +27,14 @@ function dc:get_call {tick:60, command:"execute positioned ~ ~1 ~ summon minecra
 ```
 Через 3 секунды, на актуальной позиции игрока запустится рейкаст:
 
-![](img/dif_example_1.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/dif_example_1.gif)
 ___
 
 Теперь меняем 1 параметр в команде (requirePos ставим значение 1/true): 
 ```mcfunction
 execute as @a run function dc:get_call {tick:60, command:"execute positioned ~ ~1 ~ summon minecraft:marker run function test:init", requirePos:1, requireEntity:1}
 ```
-![](img/dif_example_2.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/dif_example_2.gif)
 Если не двигаться, то на первый взгляд ничего не поменялось, но стоит запустить команду и немного отойти, как сразу будет заметно, что рейкаст запустился из места вызова `dc:get_call`.
 
 ___
@@ -43,7 +43,7 @@ ___
 ```mcfunction
 execute rotated ~30 ~ run function dc:get_call {tick:30, command:"execute positioned ~ ~1 ~ summon minecraft:marker run function test:init", requirePos:1, requireEntity:1}
 ```
-![](img/dif_example_3.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/dif_example_3.gif)
 
 Как мы видим, рейкаст запустился правее на 30 градусов. Соответственно, если мы отойдем, то он запустится на месте вызова `dc:get_call`.
 
@@ -56,9 +56,9 @@ execute as @e[type=minecraft:husk, sort=nearest, limit=1] at @s rotated ~30 ~ ru
 ```
 Так как у нас установлено значение `requireEntity:true`, то для выполнение команды важно присутсвие сущности:
 
-![](img/dif_example_4.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/dif_example_4.gif)
 ___
-![](img/dif_example_5.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/dif_example_5.gif)
 Соответсвенно, если сущность погибает, то команда не выполнится никогда. Но, если сущность вне зоны прогрузки, то алгоритм будет ждать её появления.
 ___
 
@@ -68,7 +68,7 @@ execute as MG_MAKER at @s rotated ~30 ~ run function dc:get_call {tick:60, comma
 ```
 А если же игрок выйдет с сервера, а потом зайдет обратно, то рейкаст снова запустится:
 
-![](img/dif_example_6.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/dif_example_6.gif)
 
 ___
 ### 2. КД на нажатие ПКМ
@@ -108,7 +108,7 @@ function dc:get_call {tick:600, command:"tag @s remove ReloadLightning_charge", 
 
 #прочая логика...
 ```
-![](img/dif_example_7.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/dif_example_7.gif)
 
 Мы можем наблюдать сразу несколько использований `dc:get_call` в одном примере.
 ___

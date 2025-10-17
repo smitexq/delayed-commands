@@ -38,7 +38,7 @@ ___
 ```mcfunction
 execute as @a run function dc:get_call {tick:50, command:"setblock ~ ~1 ~ sand", requirePos:0, requireEntity:1}
 ```
-![](img/example_1.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/example_1.gif)
 ___
 От имени каждого игрока на сервере выполняется `dc:get_call`. Таким образом, на позиции каждого игрока, на 1 блок выше появится песок. Произойдет это на том месте, где будет игрок в момент выполнения ***"setblock ~ ~1 ~ sand"***, то есть на его актуальной позиции.
 ### 2.
@@ -46,7 +46,7 @@ ___
 ```mcfunction
 execute at @s as @p[distance=1..] run function dc:get_call {tick:40, command: "setblock ~ ~ ~ gold_block", requirePos:1, requireEntity:1}
 ```
-![](img/example_2.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/example_2.gif)
 ___
 
 Мы заменили **requirePos** с `false` на `true`. Команда вызывается на позици `at @s`, то есть, где находится текущий игрок. Однако, вызов идет от имени `as @p[distance=1..]`, то есть от ближайшего игрока. 
@@ -58,7 +58,7 @@ ___
 ```mcfunction
 execute as @e[type=spider, limit=1, sort=nearest] at @s positioned ~-3 ~ ~ run function dc:get_call {tick:80, command:"summon cave_spider ~ ~ ~ {Silent:1b, Tags:['me']}", requirePos:1, requireEntity:0}
 ```
-![](img/example_3.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/example_3.gif)
 ___
 На позиции ближайшего паука, смещаясь на -3 блока по X, через 80 тиков призовется пещерный паук с nbt `{Silent:1b, Tags:["me"]}`. Даже если сам паук погибнет или пропадет из зоны прогрузки (так как `requireEntity` установлен на `false`, учитываем только позицию), то все равно команда сработает. При этом, берется позиция паука в тот момент, когда был сделан вызов `dc:get_call`, несмотря на то, что он потом отошел.
 ### 4.
@@ -68,7 +68,7 @@ execute as @a run function dc:get_call {tick:33, command:"scoreboard players add
 Вот тут интересно. Вызов делает каждый игрок, но для команды ни важна ни сущность, ни игрок. А это значит, что команда выполнится столько раз, сколько будет игроков, и счетчик ****count*** сравняется с количеством игроков.
 ___
 ![]()
-![](img/example_4.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/example_4.gif)
 
 ## Важное замечание
 В первых двух примерах мы использовали `requireEntity:true`. Дело в том, что в момент запроса **dc:get_call** алгоритм запоминает кто вызвал команду (по UUID сущности). И, когда приходит время исполнить команду, сначала алгоритм проверит, ***СУЩЕСТВУЕТ*** ли до сих пор та сущность или игрок. Если это не игрок, то дополнительно проверится, находится ли в зоне прогрузки эта сущность.
@@ -116,7 +116,7 @@ function dc:clear_schedule with storage dsb:dc_remove temp
 
 tellraw @a {"storage":"dsb:dc", "nbt":"Tasks", "color":"gold"}
 ```
-![](img/delete_1.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/delete_1.gif)
 ___
 
 Для начала вручную прописываю вызов на выдачу алмаза:
@@ -148,7 +148,7 @@ function dc:clear_schedule {UUID:null, command:"setblock ~ ~ ~ stone"}
 
 tellraw @a {"storage":"dsb:dc", "nbt":"Tasks", "color":"gold"}
 ```
-![](img/delete_2.gif)
+![](https://github.com/smitexq/resources/blob/main/delayed_commands/img/delete_2.gif)
 ___
 В данном примере в функции делается вызов `dc:get_call` на установку камня через 1 тик на текущей позиции.
 
